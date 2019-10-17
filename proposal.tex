@@ -23,38 +23,26 @@
 
 \section{Introduction}
 
-In a world where organizations are being inundated with data from internal and external sources, analyzing data and reacting to changes in real-time has become a key service differentiator. Examples for such needs abound - analyzing tweets to detect trending topics within minutes, reacting to news events as soon as they occur, as well as surfacing system failures to data center operators before they cascade.
-The ubiquity of these use cases has led to a plethora of distributed stream processing systems being developed and deployed at data center scale in recent years (see Apache Storm [26], Spark Streaming [10] and Twitter’s Heron [22], LinkedIn’s Samza [4], etc). Given the scales at which these systems are commonly deployed, they are naturally designed to tolerate system failures and coexist with other applications in the same clusters.
+The explosion of modern information and computer science technology systems has extremely accelerated the development of data science. A steady flow of high-volume data  
 
-However, a crucial challenge that has largely escaped the at- tention of researchers and system developers is the complexity of configuring, managing and deploying such applications. Conver- sations with users of these frameworks suggest that these manual operational tasks are not only tedious and time-consuming, but also error-prone. Operators must carefully tune these systems to balance competing objectives such as resource utilization and performance (throughput or latency). At the same time, they must also account for large and unpredictable load spikes during provisioning, and be on call to react to failures and service degradations.
-
-
-Motivated by these challenges, in this paper we present Dhalion1, a system that is built on the core philosophy that stream processing systems must self-regulate. Inspired by similar notions in complex biological and social systems, we define three important capabili- ties that make a system self-regulating.
+Existing scheduling policies proposed in Dhalion for stream processing systems focus on scaling up and down based on the current status of nodes, so actions can only be taken after symptoms are identified and diagnosed. However, in many cases, such need for scaling up and down can be predicted. For example, for a typical video streaming service, there would be more people watching at 7 pm when they finish work than at 4 am when they are still sleeping. Such daily workload is very predictable and we can scale up or down ahead of time to optimize resource usage and user experience. Our project aims to integrate policies to handle predictable traffic, with existing policies that handle sudden unprecedented change in traffic. This includes, but is not limited to, predicting future traffic from metric of each worker node, and taking actions based on predicted future traffic (either self-generated or user specified). 
 
 
-...
-
-
-...
-
-
-
-
-Based on Dhalion~\cite{}, we proposed ...
+Based on Dhalion~\cite{Floratou:2017:DSS:3137765.3137786}~\cite{Agrawal:2018:DAA:3229863.3275594}, we proposed ...
 
 It integrates 
 
 
-CloudLab~\cite{RicciEide:login14}.
+CloudLab~\cite{RicciEide}.
  
 \section{Related Work}
 
-Dhalion doesnot address .....
-
-*Megaphone... latency ...
+Dhalion doesnot address 
 
 
-Tutorial ...
+Megaphone\cite{Hoffmann:2019:MLS:3329772.3342044} latency
+
+Tutorial
 
 \section{Timeline and Evaluation Plan}
 For evaluating our project we plan to do the following:
