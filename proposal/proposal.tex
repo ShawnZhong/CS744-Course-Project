@@ -1,0 +1,75 @@
+\documentclass[pdftex,twocolumn,10pt,letterpaper]{article}
+\usepackage{graphicx, times}
+\usepackage{lipsum}
+
+\setlength{\textheight}{9.0in}
+\setlength{\columnsep}{0.25in}
+\setlength{\textwidth}{6.50in}
+\setlength{\topmargin}{0.0in}
+\setlength{\headheight}{0.0in}
+\setlength{\headsep}{0.0in}
+
+\begin{document}
+\title{Adaptable Scheduling Policy for Stream Processing System }
+\author{
+    Shawn Zhong, Suyan Qu, Sulong Zhou \\
+    Group No. 7
+}
+\date{}
+
+\interfootnotelinepenalty=10000
+
+\maketitle
+
+\section{Introduction}
+
+In a world where organizations are being inundated with data from internal and external sources, analyzing data and reacting to changes in real-time has become a key service differentiator. Examples for such needs abound - analyzing tweets to detect trending topics within minutes, reacting to news events as soon as they occur, as well as surfacing system failures to data center operators before they cascade.
+The ubiquity of these use cases has led to a plethora of distributed stream processing systems being developed and deployed at data center scale in recent years (see Apache Storm [26], Spark Streaming [10] and Twitter’s Heron [22], LinkedIn’s Samza [4], etc). Given the scales at which these systems are commonly deployed, they are naturally designed to tolerate system failures and coexist with other applications in the same clusters.
+
+However, a crucial challenge that has largely escaped the at- tention of researchers and system developers is the complexity of configuring, managing and deploying such applications. Conver- sations with users of these frameworks suggest that these manual operational tasks are not only tedious and time-consuming, but also error-prone. Operators must carefully tune these systems to balance competing objectives such as resource utilization and performance (throughput or latency). At the same time, they must also account for large and unpredictable load spikes during provisioning, and be on call to react to failures and service degradations.
+
+
+Motivated by these challenges, in this paper we present Dhalion1, a system that is built on the core philosophy that stream processing systems must self-regulate. Inspired by similar notions in complex biological and social systems, we define three important capabili- ties that make a system self-regulating.
+
+
+...
+
+
+...
+
+
+
+
+Based on Dhalion~\cite{}, we proposed ...
+
+It integrates 
+
+
+CloudLab~\cite{RicciEide:login14}.
+ 
+\section{Related Work}
+
+Dhalion doesnot address .....
+
+*Megaphone... latency ...
+
+
+Tutorial ...
+
+\section{Timeline and Evaluation Plan}
+For evaluating our project we plan to do the following:
+\begin{itemize}
+  \item Measure throughput, latency 
+  \item Scale to 10 machines.
+\end{itemize}
+
+\begin{itemize}
+  \item Nov 1: Run experiments 
+  \item Dec 15: Write Final Report
+\end{itemize}
+
+{
+\bibliographystyle{abbrv}
+\bibliography{ref}
+}
+\end{document}
