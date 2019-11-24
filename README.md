@@ -28,7 +28,8 @@ kubectl patch deploy tiller-deploy \
 
 helm install heron-charts/heron \
 --set platform=gke \
---name kubernetes
+--name kubernetes \
+--values https://raw.githubusercontent.com/apache/incubator-heron/master/deploy/kubernetes/gke/small.yaml
 ```
 
 #### Manual Deployment
