@@ -1,6 +1,5 @@
 sudo apt-get update -y
 sudo apt-get install software-properties-common
-sudo apt-get upgrade -y
 sudo apt-get install git build-essential automake cmake libtool zip libunwind-setjmp0-dev zlib1g-dev unzip pkg-config -y
 sudo apt-get install -y tar wget git
 sudo apt-get install -y autoconf libtool
