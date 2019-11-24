@@ -24,8 +24,11 @@ kubectl patch deploy tiller-deploy \
 
 helm init
 
+helm repo add heron-charts https://storage.googleapis.com/heron-charts
+
 helm install heron-charts/heron \
---set platform=gke
+--set platform=gke \
+--name kubernetes
 ```
 
 #### Manual Deployment
