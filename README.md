@@ -8,6 +8,10 @@ https://apache.github.io/incubator-heron/docs/getting-started/
 
 https://github.com/apache/incubator-heron/tree/master/deploy/kubernetes/minikube
 
+#### Link to Heron tracker
+
+http://localhost:8001/api/v1/namespaces/default/services/heron-tracker:8888/proxy/topologies
+
 #### Link to Heron UI
 
 http://localhost:8001/api/v1/namespaces/default/services/heron-ui:8889/proxy
