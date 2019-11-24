@@ -36,13 +36,18 @@ set service_url http://localhost:8001/api/v1/namespaces/default/services/heron-a
 ```
 
 
-#### Submit WindowedWordCountTopology
+#### Submit Topology
 
 ```sh
 heron submit kubernetes \
 ~/.heron/examples/heron-streamlet-examples.jar \
 com.twitter.heron.examples.streamlet.WindowedWordCountTopology \
 WindowedWordCountTopology
+```
+
+```sh
+heron submit kubernetes ~/.heron/examples/heron-api-examples.jar \
+com.twitter.heron.examples.api.AckingTopology acking
 ```
 
 ## SSH commands
