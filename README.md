@@ -1,6 +1,6 @@
 # CS-744-Course-Project
 
-# Some useful commands
+## Some useful commands
 
 #### Parallel scp
 
