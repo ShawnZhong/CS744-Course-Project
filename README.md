@@ -10,6 +10,12 @@ http://localhost:8001/api/v1/namespaces/default/services/heron-ui:8889/proxy
 
 http://localhost:8001/api/v1/namespaces/default/services/heron-apiserver/proxy/
 
+#### Start proxy
+
+```sh
+kubectl proxy -p 8001
+```
+
 #### Submit WindowedWordCountTopology
 
 ```sh
