@@ -22,6 +22,12 @@ http://localhost:8001/api/v1/namespaces/default/services/heron-apiserver:9000/pr
 
 http://localhost:8001/api/v1/namespaces/default/services/heron-apiserver:9000/proxy/api/v1/version
 
+#### Deployment
+
+```sh
+kubectl create -f https://raw.githubusercontent.com/ShawnZhong/incubator-heron/master/deploy/kubernetes/general/apiserver.yaml
+```
+
 #### Start proxy
 
 ```sh
