@@ -5,7 +5,7 @@
 #### Reset Kubernetes
 
 ```sh
-kubectl delete daemonsets,replicasets,services,deployments,pods,rc --all
+kubectl delete daemonsets,replicasets,services,deployments,pods,rc --all --grace-period=0 --force
 ```
 
 #### Link to docs
