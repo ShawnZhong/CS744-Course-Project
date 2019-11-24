@@ -11,6 +11,10 @@ https://github.com/apache/incubator-heron/tree/master/deploy/kubernetes/general
 #### Helm Deployment
 
 ```sh
+helm init
+
+helm repo add heron-charts https://storage.googleapis.com/heron-charts
+
 kubectl create serviceaccount tiller \
 --namespace kube-system \
 
@@ -21,10 +25,6 @@ kubectl create clusterrolebinding tiller-cluster-rule \
 kubectl patch deploy tiller-deploy \
 --namespace kube-system \
 --patch '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
-
-helm init
-
-helm repo add heron-charts https://storage.googleapis.com/heron-charts
 
 helm install heron-charts/heron \
 --set platform=gke \
