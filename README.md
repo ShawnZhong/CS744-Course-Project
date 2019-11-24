@@ -2,6 +2,12 @@
 
 ## Heron on Kubernetes
 
+#### Reset Kubernetes
+
+```sh
+kubectl delete daemonsets,replicasets,services,deployments,pods,rc --all
+```
+
 #### Link to docs
 
 https://apache.github.io/incubator-heron/docs/operators/deployment/schedulers/kubernetes/
