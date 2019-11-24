@@ -31,7 +31,7 @@ com.twitter.heron.examples.streamlet.WindowedWordCountTopology \
 WindowedWordCountTopology
 ```
 
-## Some useful commands
+## SSH commands
 
 #### Parallel scp
 
