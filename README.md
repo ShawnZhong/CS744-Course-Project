@@ -11,6 +11,8 @@ https://github.com/apache/incubator-heron/tree/master/deploy/kubernetes/general
 #### Helm Deployment
 
 ```sh
+gcloud container clusters get-credentials heron-gke-dev-cluster 
+
 helm init
 
 helm repo add heron-charts https://storage.googleapis.com/heron-charts
