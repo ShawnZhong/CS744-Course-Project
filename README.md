@@ -18,7 +18,9 @@ http://localhost:8001/api/v1/namespaces/default/services/heron-ui:8889/proxy
 
 #### Link to Heron API Server
 
-http://localhost:8001/api/v1/namespaces/default/services/heron-apiserver/proxy/
+http://localhost:8001/api/v1/namespaces/default/services/heron-apiserver:9000/proxy/
+
+http://localhost:8001/api/v1/namespaces/default/services/heron-apiserver:9000/proxy/api/v1/version
 
 #### Start proxy
 
