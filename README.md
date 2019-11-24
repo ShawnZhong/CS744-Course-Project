@@ -28,6 +28,14 @@ http://localhost:8001/api/v1/namespaces/default/services/heron-apiserver:9000/pr
 kubectl proxy -p 8001
 ```
 
+#### Set Service URL
+
+```sh
+heron config kubernetes \
+set service_url http://localhost:8001/api/v1/namespaces/default/services/heron-apiserver:9000/proxy
+```
+
+
 #### Submit WindowedWordCountTopology
 
 ```sh
