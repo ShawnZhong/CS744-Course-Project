@@ -2,6 +2,13 @@
 
 ## Heron on Kubernetes
 
+#### Link to docs
+
+https://apache.github.io/incubator-heron/docs/operators/deployment/schedulers/kubernetes/
+
+https://github.com/apache/incubator-heron/tree/master/deploy/kubernetes/general
+
+
 #### Deployment
 
 ```sh
@@ -20,12 +27,6 @@ kubectl create -f https://raw.githubusercontent.com/ShawnZhong/incubator-heron/m
 kubectl proxy -p 8001
 ```
 
-
-#### Link to docs
-
-https://apache.github.io/incubator-heron/docs/getting-started/
-
-https://github.com/apache/incubator-heron/tree/master/deploy/kubernetes/minikube
 
 #### Link to Heron tracker
 
