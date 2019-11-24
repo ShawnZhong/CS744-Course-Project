@@ -33,9 +33,8 @@ kubectl patch deploy tiller-deploy \
 --patch '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 
 helm install heron-charts/heron \
---set image=heron/heron:0.16.2 \
 --set platform=gke \
---name heron \
+--name kubernetes \
 --values https://raw.githubusercontent.com/apache/incubator-heron/master/deploy/kubernetes/gke/small.yaml
 ```
 
