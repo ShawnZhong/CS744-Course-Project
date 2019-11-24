@@ -2,6 +2,25 @@
 
 ## Heron on Kubernetes
 
+#### Deployment
+
+```sh
+kubectl create -f https://raw.githubusercontent.com/apache/incubator-heron/master/deploy/kubernetes/general/zookeeper.yaml
+
+kubectl create -f https://raw.githubusercontent.com/apache/incubator-heron/master/deploy/kubernetes/general/bookkeeper.yaml
+
+kubectl create -f https://raw.githubusercontent.com/apache/incubator-heron/master/deploy/kubernetes/general/tools.yaml
+
+kubectl create -f https://raw.githubusercontent.com/ShawnZhong/incubator-heron/master/deploy/kubernetes/general/apiserver.yaml
+```
+
+#### Start proxy
+
+```sh
+kubectl proxy -p 8001
+```
+
+
 #### Link to docs
 
 https://apache.github.io/incubator-heron/docs/getting-started/
@@ -22,17 +41,6 @@ http://localhost:8001/api/v1/namespaces/default/services/heron-apiserver:9000/pr
 
 http://localhost:8001/api/v1/namespaces/default/services/heron-apiserver:9000/proxy/api/v1/version
 
-#### Deployment
-
-```sh
-kubectl create -f https://raw.githubusercontent.com/ShawnZhong/incubator-heron/master/deploy/kubernetes/general/apiserver.yaml
-```
-
-#### Start proxy
-
-```sh
-kubectl proxy -p 8001
-```
 
 #### Set Service URL
 
