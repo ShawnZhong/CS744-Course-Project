@@ -1,5 +1,14 @@
 # CS-744-Course-Project
 
+## Heron
+
+#### Kill a topology
+
+```sh
+heron kill kubernetes WindowedWordCountTopology
+```
+
+
 ## Heron on Kubernetes
 
 #### Reset Kubernetes
