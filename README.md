@@ -1,6 +1,12 @@
 # CS-744-Course-Project
 
-## Heron
+## Heron on Kubernetes
+
+#### Link to docs
+
+https://apache.github.io/incubator-heron/docs/getting-started/
+
+https://github.com/apache/incubator-heron/tree/master/deploy/kubernetes/minikube
 
 #### Link to Heron UI
 
