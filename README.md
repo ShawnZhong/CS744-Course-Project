@@ -8,8 +8,27 @@ https://apache.github.io/incubator-heron/docs/operators/deployment/schedulers/ku
 
 https://github.com/apache/incubator-heron/tree/master/deploy/kubernetes/general
 
+#### Helm Deployment
 
-#### Deployment
+```sh
+kubectl create serviceaccount tiller \
+--namespace kube-system \
+
+kubectl create clusterrolebinding tiller-cluster-rule \
+--clusterrole cluster-admin \
+--serviceaccount kube-system:tiller
+
+kubectl patch deploy tiller-deploy \
+--namespace kube-system \
+--patch '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+
+helm init
+
+helm install heron-charts/heron \
+--set platform=gke
+```
+
+#### Manual Deployment
 
 ```sh
 kubectl create -f https://raw.githubusercontent.com/apache/incubator-heron/master/deploy/kubernetes/general/zookeeper.yaml
