@@ -91,18 +91,6 @@ heron submit kubernetes ~/.heron/examples/heron-api-examples.jar \
 com.twitter.heron.examples.api.AckingTopology acking
 ```
 
-#### Manual Deployment
-
-```sh
-kubectl create -f https://raw.githubusercontent.com/apache/incubator-heron/master/deploy/kubernetes/general/zookeeper.yaml
-
-kubectl create -f https://raw.githubusercontent.com/apache/incubator-heron/master/deploy/kubernetes/general/bookkeeper.yaml
-
-kubectl create -f https://raw.githubusercontent.com/apache/incubator-heron/master/deploy/kubernetes/general/tools.yaml
-
-kubectl create -f https://raw.githubusercontent.com/ShawnZhong/incubator-heron/master/deploy/kubernetes/general/apiserver.yaml
-```
-
 ## SSH commands
 
 #### Parallel scp
