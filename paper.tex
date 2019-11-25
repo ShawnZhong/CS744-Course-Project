@@ -1,0 +1,78 @@
+\documentclass[pdftex,twocolumn,10pt,letterpaper]{article}
+\usepackage{graphicx, times}
+\usepackage{lipsum}
+
+\setlength{\textheight}{9.0in}
+\setlength{\columnsep}{0.25in}
+\setlength{\textwidth}{6.50in}
+\setlength{\topmargin}{0.0in}
+\setlength{\headheight}{0.0in}
+\setlength{\headsep}{0.0in}
+
+\begin{document}
+
+\title{Adaptable Scheduling Policy for Elastic Stream Processing System }
+\author{
+    Shawn Zhong, Suyan Qu, Sulong Zhou \\
+    \{wzhong36, squ27, szhou78\}@wisc.edu\\
+    Group No. 7
+}
+\date{October 17, 2019}
+
+\interfootnotelinepenalty=10000
+
+\maketitle
+
+\section{Introduction}
+
+The explosion of modern information and computer science technology systems has extremely accelerated the development of data science. The ubiquitous social network, e-commerce platform and search engine continuously produce steady flows of high-volume data. Meanwhile, handling and analyzing real-time big data have become core demands for business and industry. This dramatic escalation in volumes of stream data is challenging existing data processing systems because of high-volume of users, low-latency of processing, heterogeneous resources and burstiness of events.  
+
+In order to deal with the emerged challenges and satisfy the needs of related markets, varieties of stream data processing platforms targeted in scalability, fault tolerance and computing speed have been developed and deployed, such as Twitter’s Heron~\cite{Kulkarni:2015:THS:2723372.2742788}, LinkedIn’s Samza~\cite{Noghabi:2017:SSS:3137765.3137770}, Apache Kafka~\cite{kreps2011kafka} and Apache Flink~\cite{Carbone2015ApacheFS}. However, these applications are not able to adapt because they lack control over the rate of occurrence of activities. For example, the flow of data at low activity periods can be dramatically different from the flow of data observed at peak periods. One of the most outstanding accomplishments to design an adaptable stream processing application is Dhalion~\cite{Agrawal:2018:DAA:3229863.3275594}~\cite{Floratou:2017:DSS:3137765.3137786}. Dhalion is a library that sits on top of Twitter Heron. It periodically retrieves metrics from Heron's Metrics Managers, detecting any problematic behaviors in these metrics, and take actions to recover the streaming system. Dhalion also supports user-specified policies for more flexibility. 
+
+% Dhalion is very short-sighted
+Nevertheless, Dhalion fails to distinguish between predictability and burstiness of events. Existing scheduling policies proposed in Dhalion for stream processing systems focus on scaling up and down based on the current status of nodes, so actions can only be taken after symptoms are identified and diagnosed. However, in many cases, such need for scaling up and down can be predicted in advance. For example, for a typical video streaming service, there would be more people watching at 7 pm when they finish work than at 4 am when they are still sleeping. Such daily workload is very predictable and we can scale up or down ahead of time to optimize resource usage and user experience. Our project aims to integrate policies to handle predictable traffic, with existing policies that handle sudden unprecedented change in traffic. This includes, but is not limited to, predicting future traffic from metric of each worker node, and taking actions based on predicted future traffic (either self-generated or user-specified). We will conduct our experiments on CloudLab~\cite{RicciEide} with Twitter Heron and Dhalion. 
+\section{Related Work}
+
+
+
+\subsection{Twitter Heron}
+Heron is a real-time stream data processing system used in Twitter. It consists of an Aurora scheduler and multiple topologies, with each topology includes a Topology Master, a Zoo Keeper, and several containers each containing a Stream Manager, a list of Heron Instances and a Metric Manager. Metric Managers will report the server status, resource usage, and other related metrics to the Monitoring System for failure recovery and performance improvement. 
+
+% http://www.vldb.org/pvldb/vol11/p2050-agrawal.pdf
+% https://www.microsoft.com/en-us/research/wp-content/uploads/2017/06/p1218-floratou.pdf
+
+\subsection{Dhalion}
+Dhalion is a library built on top of Twitter Heron. It is a self-regulating streaming system that is capable of self-tuning, self-stablizing, and self-healing. Dhalion keeps a list of policies. It communicates with Heron's Metric Managers, which keeps track of resource usage, server status, and other metrics of Heron instances, to detect violation of these policies. It periodically collects various metrics to detect symptoms that indicate unhealthiness of the streaming application. Once detected, it attempts to find diagnoses that explain these symptoms, and take recovery actions by communicating with Heron's schedulers to resolve these symptoms. Dhalion has several default policies and users can specify their own policies as appropriate. 
+
+% https://www.youtube.com/watch?v=Dm98w7gkKIA
+% \subsection{Drizzle} 
+% Drizzle~\cite{Venkataraman:2017:DFA:3132747.3132750},
+% Drizzle is a low latency execution engine for Apache Spark. It improved Spark Streaming with group scheduling and pre-scheduling to reduce processing latency to the order of 100 ms while maintaining low recovery latency. 
+
+\section{Timeline and Evaluation Plan}
+For evaluating our project we plan to do the following:
+\begin{itemize}
+  \item Run Dhalion with the default scheduling policy on periodic workload to obtain a baseline performance (throughput, latency).
+  \item Run Dhalion with our scheduling policy using the same experiment setup and measure the performance change. 
+  \item Experiment with different workload and compare the performance between default policy and our policy. 
+  \item Fine tune the parameters and models for predicting the future workload.
+\end{itemize}
+
+\noindent Timeline: 
+
+\begin{itemize}
+  \item October 21: Setup the development environment for Dhalion
+  \item October 24: Run experiments on original Dhalion for baseline performance
+  \item Nov 10: Finish the implementation of scheduling policy
+  \item Nov 15: Run initial experiments on our tentative scheduling policy
+  \item Nov 18: Fine tune the policy with different parameters and models
+  \item Nov 25: Finish all experiments
+  \item Dec 15: Write Final Report
+\end{itemize}
+
+{
+% \bibliographystyle{abbrv}
+\bibliographystyle{ieeetr}
+\bibliography{ref}
+}
+\end{document}
