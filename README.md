@@ -83,7 +83,7 @@ set service_url http://localhost:8001/api/v1/namespaces/default/services/kuberne
 heron submit kubernetes \
 ~/.heron/examples/heron-streamlet-examples.jar \
 com.twitter.heron.examples.streamlet.WindowedWordCountTopology \
-WindowedWordCountTopology
+wwc
 ```
 
 ```sh
