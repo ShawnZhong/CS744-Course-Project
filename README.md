@@ -1,6 +1,27 @@
 # CS-744-Course-Project
 
-## Heron
+
+## SSH commands
+
+#### Parallel scp
+
+```sh
+pscp -h slaves -O StrictHostKeyChecking=no src /users/szhong
+```
+
+#### Parallel ssh
+
+```sh
+pssh -i -h slaves -O StrictHostKeyChecking=no cmd
+```
+
+## Kubernetes
+
+#### Reset Kubernetes
+
+```sh
+kubectl delete daemonsets,replicasets,services,deployments,pods,rc --all --grace-period=0 --force
+```
 
 #### Kill a topology
 
@@ -9,15 +30,15 @@ heron kill kubernetes WindowedWordCountTopology
 ```
 
 
-## Heron on Kubernetes
-
-#### Reset Kubernetes
+#### Start proxy
 
 ```sh
-kubectl delete daemonsets,replicasets,services,deployments,pods,rc --all --grace-period=0 --force
+kubectl proxy -p 8001
 ```
 
-#### Link to docs
+## Heron
+
+#### Links to docs
 
 https://apache.github.io/incubator-heron/docs/operators/deployment/schedulers/kubernetes/
 
@@ -46,13 +67,6 @@ helm install heron-charts/heron \
 --name kubernetes \
 --values https://raw.githubusercontent.com/apache/incubator-heron/master/deploy/kubernetes/gke/small.yaml
 ```
-
-#### Start proxy
-
-```sh
-kubectl proxy -p 8001
-```
-
 
 #### Link to Heron tracker
 
@@ -90,18 +104,3 @@ wwc
 heron submit kubernetes ~/.heron/examples/heron-api-examples.jar \
 com.twitter.heron.examples.api.AckingTopology acking
 ```
-
-## SSH commands
-
-#### Parallel scp
-
-```sh
-pscp -h slaves -O StrictHostKeyChecking=no src /users/szhong
-```
-
-#### Parallel ssh
-
-```sh
-pssh -i -h slaves -O StrictHostKeyChecking=no cmd
-```
-
