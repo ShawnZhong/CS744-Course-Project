@@ -29,27 +29,18 @@ kubectl delete daemonsets,replicasets,services,deployments,pods,rc --all --grace
 heron kill kubernetes WindowedWordCountTopology
 ```
 
-
 #### Start proxy
 
 ```sh
 kubectl proxy -p 8001
 ```
 
-## Heron
+## Helm
 
-#### Links to docs
-
-https://apache.github.io/incubator-heron/docs/operators/deployment/schedulers/kubernetes/
-
-https://github.com/apache/incubator-heron/tree/master/deploy/kubernetes/general
-
-#### Helm Deployment
+#### Init
 
 ```sh
 helm init
-
-helm repo add heron-charts https://storage.googleapis.com/heron-charts
 
 kubectl create serviceaccount tiller \
 --namespace kube-system \
@@ -61,6 +52,20 @@ kubectl create clusterrolebinding tiller-cluster-rule \
 kubectl patch deploy tiller-deploy \
 --namespace kube-system \
 --patch '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+```
+
+## Heron
+
+#### Links to docs
+
+https://apache.github.io/incubator-heron/docs/operators/deployment/schedulers/kubernetes/
+
+https://github.com/apache/incubator-heron/tree/master/deploy/kubernetes/general
+
+#### Helm
+
+```sh
+helm repo add heron-charts https://storage.googleapis.com/heron-charts
 
 helm install heron-charts/heron \
 --set platform=gke \
