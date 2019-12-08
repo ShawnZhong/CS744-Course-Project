@@ -54,6 +54,22 @@ kubectl patch deploy tiller-deploy \
 --patch '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 ```
 
+## Flink
+
+https://github.com/docker-flink/examples
+
+## Spark 
+
+```sh
+helm install --name spark stable/spark
+```
+
+## Kafka 
+```sh
+helm repo add incubator http://storage.googleapis.com/kubernetes-charts-incubator
+helm install --name my-kafka incubator/kafka
+```
+
 ## Heron
 
 #### Links to docs
