@@ -58,6 +58,11 @@ kubectl patch deploy tiller-deploy \
 
 https://github.com/docker-flink/examples
 
+```sh
+helm package helm/flink/
+helm install --name flink --set flink.num_taskmanagers=5 flink*.tgz
+```
+
 ## Spark 
 
 ```sh
