@@ -3,13 +3,13 @@
 
 ## SSH commands
 
-#### Parallel scp
+##### Parallel scp
 
 ```sh
 pscp -h slaves -O StrictHostKeyChecking=no src /users/szhong
 ```
 
-#### Parallel ssh
+##### Parallel ssh
 
 ```sh
 pssh -i -h slaves -O StrictHostKeyChecking=no cmd
@@ -17,19 +17,19 @@ pssh -i -h slaves -O StrictHostKeyChecking=no cmd
 
 ## Kubernetes
 
-#### Reset Kubernetes
+##### Reset Kubernetes
 
 ```sh
 kubectl delete daemonsets,replicasets,services,deployments,pods,rc --all --grace-period=0 --force
 ```
 
-#### Kill a topology
+##### Kill a topology
 
 ```sh
 heron kill kubernetes WindowedWordCountTopology
 ```
 
-#### Start proxy
+##### Start proxy
 
 ```sh
 kubectl proxy -p 8001
@@ -37,7 +37,7 @@ kubectl proxy -p 8001
 
 ## Helm
 
-#### Init
+##### Init
 
 ```sh
 helm init
@@ -77,13 +77,13 @@ helm install --name my-kafka incubator/kafka
 
 ## Heron
 
-#### Links to docs
+##### Links to docs
 
 https://apache.github.io/incubator-heron/docs/operators/deployment/schedulers/kubernetes/
 
 https://github.com/apache/incubator-heron/tree/master/deploy/kubernetes/general
 
-#### Helm
+##### Helm
 
 ```sh
 helm repo add heron-charts https://storage.googleapis.com/heron-charts
@@ -94,22 +94,22 @@ helm install heron-charts/heron \
 --values https://raw.githubusercontent.com/apache/incubator-heron/master/deploy/kubernetes/gke/small.yaml
 ```
 
-#### Link to Heron tracker
+##### Link to Heron tracker
 
 http://localhost:8001/api/v1/namespaces/default/services/kubernetes-tracker:8888/proxy/topologies
 
-#### Link to Heron UI
+##### Link to Heron UI
 
 http://localhost:8001/api/v1/namespaces/default/services/kubernetes-ui:8889/proxy
 
-#### Link to Heron API Server
+##### Link to Heron API Server
 
 http://localhost:8001/api/v1/namespaces/default/services/kubernetes-apiserver:9000/proxy/
 
 http://localhost:8001/api/v1/namespaces/default/services/kubernetes-apiserver:9000/proxy/api/v1/version
 
 
-#### Set Service URL
+##### Set Service URL
 
 ```sh
 heron config kubernetes \
@@ -117,7 +117,7 @@ set service_url http://localhost:8001/api/v1/namespaces/default/services/kuberne
 ```
 
 
-#### Submit Topology
+##### Submit Topology
 
 ```sh
 heron submit kubernetes \
