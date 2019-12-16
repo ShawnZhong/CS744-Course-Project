@@ -10,13 +10,15 @@
 \setlength{\headheight}{0.0in}
 \setlength{\headsep}{0.0in}
 
+% https://arxiv.org/pdf/1709.01363.pdf
+
 \begin{document}
 
-\title{ Review of Stream Processing System }
+\title{ Comparative Analysis of Stream Processing Systems }
 \author{
     Shawn Zhong, Suyan Qu, Sulong Zhou \\
     \{wzhong36, squ27, szhou78\}@wisc.edu\\
-    Group No. 7
+    CS 744 Group No. 7
 }
 \date{October 17, 2019}
 
@@ -77,7 +79,7 @@ Spark Streaming is an extension of the Spark core API that enables high-throughp
 Apache Flink is a distributed processing engine for streaming data and batch data. The stream-first approach provides low latency, high throughput, per-item processing, and the ability to compute complex calculations. Flink integrates with all common cluster resource managers such as Hadoop YARN, Apache Mesos, and Kubernetes but can also be setup to run as a stand-alone cluster by resource-manager-specific deployment modes. Low latency is guaranteed by local state optimization in memory. Flink applications are parallelized in a distributed system. Therefore, an application can leverage virtually unlimited amounts of CPUs, main memory, disk and network IO. 
 
 \subsubsection{Kafka Streams}
-Kafka Streams is a real-time stream computing library that relies on existing Kafka clusters to provide distributed, highly fault-tolerant, real-time stream computation. Kafka Streams is designed to be lightweight. It has no external dependencies other than Kafka Stream Client library, ans can be easily embedded in Java applications. 
+Kafka Streams is a real-time stream computing library that relies on existing Kafka clusters to provide distributed, highly fault-tolerant, real-time stream computation. Kafka Streams is designed to be lightweight. It has no external dependencies other than Kafka Stream Client library, and can be easily embedded in Java applications. 
 
 \section{Comparisons}
 
