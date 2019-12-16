@@ -1,5 +1,11 @@
 # CS-744-Course-Project
 
+## Documents
+
+Paper: https://www.overleaf.com/read/qfvgwpjvvcbh
+
+Poster: https://github.com/ShawnZhong/CS-744-Course-Project/blob/master/Poster.pdf
+
 
 ## SSH commands
 
