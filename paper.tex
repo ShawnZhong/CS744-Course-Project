@@ -15,7 +15,7 @@
 \title{ Comparative Analysis of Stream Processing Systems }
 \author{
     Shawn Zhong, Suyan Qu, Sulong Zhou \\
-    \{wzhong36, squ27, szhou78\}@wisc.edu\\
+    \{shawn.zhong, squ27, szhou78\}@wisc.edu\\
     \\
     CS 744: Big Data Systems \\
     Group No. 7
@@ -96,9 +96,9 @@ In Apache Storm and Heron, the computation graph is called topology. After the u
 
 Spark Streaming is an extension of the core Spark API. Unlike Storm, it does not process a single stream of data at the same time. Instead, it splits the data stream by time interval before processing the data stream. The abstraction for continuous data streams in Spark Streaming is called DStream (Discretized Stream), which is a small batch of RDD (Elastic Distributed Dataset). RDD can be converted by any function and sliding data window for parallel operation.
 
-The basic building blocks of Flink programs are stream and transformation. Stream is an intermediate result data, and transformation is an operation that performs calculation processing on one or more input (e.g., Map, FlatMap, Reduce, Window). When executed, the Flink program is mapped to the data stream, which is composed of the stream and the corresponding transformation. Each data stream starts at one or more sources and ends at one or more sinks (e.g., writeAsText, writeAsCsv, print). Data flow is similar to an arbitrary directed acyclic graph. 
+The building blocks of Flink programs are stream and transformation. Stream is an intermediate result, and transformation is an operation that performs calculation processing on one or more input (e.g., Map, FlatMap, Reduce, Window). When executed, the Flink program is mapped to the data stream, which is composed of the stream and the corresponding transformation. Each data stream starts at one or more sources and ends at one or more sinks (e.g., writeAsText, writeAsCsv, print). Data flow is similar to an arbitrary DAG (directed acyclic graph). 
 
-Kafka Streams applications are composed of several stream partitions. A stream partition is defined as an ordered, fault-tolerant, and read-only data queue. Each record is in the form of a key-value pair. Kafka Streams applications define computing logic through several topologies. The nodes in the topology are stream processors, such as map, filter, join, aggregate and other operators; source and sink processors are special cases, identifying the start and end of the topology. The edges are data streams connecting two stream processors.
+Kafka Streams applications are composed of several stream partitions. A stream partition is defined as an ordered, fault-tolerant, and read-only data queue. Each record is in the form of a key-value pair. Kafka Streams applications define computing logic through several topologies. The nodes in the topology are stream processors, such as map, filter, join, aggregate and other operators; source and sink processors are special cases, identifying the start and end of the topology. The edges are data streams connecting two stream processors. Overall, Kafka Streams has a similar computation model as Apache Flink. 
 
 \subsection{Scalibility}
 
@@ -204,7 +204,7 @@ The schema stores related information for a number of advertisements promoted by
 
 We generate 5,000,000 records per second with ramp-up time of 10 seconds to allow the JVM to warm up. In Kafka Streams, the static table is imported from Kafka as a KTable. In case of a shuffle overhead in Kafka Streams, we equivalently partition the static table and the events stream. In Spark, we join event stream with a static local dataset. The processing system will count the number of actions, such as views, clicks, on each ads. 
 
-The output has the following schema
+The output has the following schema: 
 
 \begin{itemize}
     \item Time Window: Timestamp
@@ -213,7 +213,7 @@ The output has the following schema
     \item Last Update: Timestamp
 \end{itemize}
 
-All versions for the software and libraries used are listed in Table \ref{tab:setup} 
+All versions for the software and libraries used are listed in Table \ref{tab:setup} for reproducibility.
 
 \begin{table}[]
     \centering
@@ -236,12 +236,12 @@ All versions for the software and libraries used are listed in Table \ref{tab:se
 
 
 \subsection{Benchmark Result}
-We run Yahoo Benchmarks on Spark Streaming and Kafka Streams for 5 times. Results are shown in Figure \ref{fig:latency} and Figure \ref{fig:throughput}. 
+We run the benchmark on Spark Streaming and Kafka Streams for 5 times, and take their average in this report. The results are shown in Figure \ref{fig:latency} and Figure \ref{fig:throughput}. 
 
-The latency was calculated in two steps. First, the timestamp of the latest record that was received for a pair of campaign and event-time-window during the windowed counts phase. Second, the latency was indicated by the difference between this timestamp and the Kafka ingestion timestamp of the output. As shown in Figure \ref{fig:latency}, we compared the latency between spark streaming and Kafka streams, the Kafka streams has much higher latency. This is very counter intuitive. Here are some of our proposed explanations: 
+The latency was calculated in two steps. First, the timestamp of the latest record that was received for a pair of campaign and event-time-window during the windowed counts phase. Second, the latency was indicated by the difference between this timestamp and the Kafka ingestion timestamp of the output. As shown in Figure \ref{fig:latency}, we compared the latency between spark streaming and Kafka streams, the Kafka streams has much higher latency. This is very counter-intuitive. Here are some of our proposed explanations: 
 \begin{itemize}
     \item Kafka Stream is still a newly-developed, light-weighted stream processing system that is not well optimized for complicated stream computation, such as joining Ads with Campaign ID. 
-    \item Kafka Stream is a client-side library, so there might be some communication overhead between the client and the cluster. For Spark Streaming, the user only communicate with the cluster once when they submit the job to the cluster, and the result is saved on the cluster for manual retrieval.  
+    \item Kafka Stream is a client-side library, so there might be some communication overhead between the client and the cluster. For Spark Streaming, the user only communicates with the cluster once when they submit the job to the cluster, and the result is saved on the cluster for manual retrieval.  
     \item Kafka creates Kstream / Ktable for streaming data, which may be associated with a large overhead, especially when working with large-scale real-time processing tasks. 
 \end{itemize}
 
@@ -260,12 +260,16 @@ The latency was calculated in two steps. First, the timestamp of the latest reco
 \end{figure}
 
 
-The throughput was denoted by the average number of records in the processing duration. As shown in Figure \ref{fig:throughput}, the throughput in Spark Streaming achieved 2M/s, which completely outperformed Kafka streams. This is because Kafka Streams processes data as soon as they arrive while Spark Streaming treat stream data as micro-batches. With the use of micro-batches, data that arrive at approximately the same time can be grouped and processed together, which effectively increases the throughput. Therefore, Spark Streaming can process much more data at simultaneously than Kafka Streams can do, which is what we see in Figure \ref{fig:throughput}. 
+The throughput was denoted by the average number of records in the processing duration. As shown in Figure \ref{fig:throughput}, the throughput in Spark Streaming achieved 2M/s, which completely outperformed Kafka streams. This is because Kafka Streams processes data as soon as they arrive while Spark Streaming treat stream data as micro-batches. With the use of micro-batches, data that arrive at approximately the same time can be grouped and processed together, which effectively increases the throughput. Therefore, Spark Streaming can process much more data simultaneously than Kafka Streams can do, which is what we see in Figure \ref{fig:throughput}. 
 
 \section{Conclusions}
-The comparison among streaming data processing systems has become popular topics, and it is hard to pick an omnipotent data streaming platform because each of them studied here have their advantages and disadvantages. In addition to past traditional comparative research of data streaming systems that focused on performance benchmark of throughput and latency, we highlight the social factors in our report. These social factors, such as, are equally important as the performance because they reveal how active the relative communities are
+The comparison among streaming data processing systems has become popular topics, and it is hard to pick an omnipotent data streaming platform because each of them studied here have their advantages and disadvantages.
 
-We look forward to expanding this benchmark and testing newer releases of these systems as they come out.
+In addition to traditional comparative research of data streaming systems that focused on performance benchmark of throughput and latency, we also highlight the Google search history and repository information as social factors in our report. We suspect that these social factors are equally important as the performance because they reveal how active the corresponding communities are. 
+
+When choosing the most suitable processing system, we need to consider not only performances but also other factors such as how difficult it is to deploy these systems in different cluster environments or integrated with other platforms and libraries, how robust the systems are to faults and stragglers, and how difficult it is to implement services on these systems. Storm and Heron, for example, are reported to have great performance and are widely used in Twitter, but due to its complicated dependency issues, this will largely discourage the users and gradually undermine the activeness of their communities, leading to even less support for deployment. With Spark Streaming and Apache Flink, on the other hand, their active communities can provide its users with great support. In addition, a streaming system with an active community can quickly develop to be more powerful. Flink, for example, has developed support for many other applications such as Mesos, Yarn, etc. 
+
+As the configuration and deployment of Heron and the connection between Fink and Kafka consumed most of our time, the performance benchmark here is limited. We would like to evaluate resource utilization, such as CPU, memory, and network if more time is given. In the future, we hope to update and expand this benchmark for new releases of these systems as they come out. Furthermore, we suggest keeping an eye on their trend and state by referencing the social factors that we proposed in this report.    
 
 
 {
